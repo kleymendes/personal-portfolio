@@ -1,21 +1,45 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+const N8N_WEBHOOK_URL = 'https://kleysilva.app.n8n.cloud/webhook/d75daefc-60f6-4d95-84bb-94f804aace34/portfolio-contact'
+
 export default function Contact() {
   const { t } = useTranslation()
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Contato via Portfolio – ${formData.name}`)
-    const body = encodeURIComponent(`Nome: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)
-    window.open(`mailto:kley-m@hotmail.com?subject=${subject}&body=${body}`)
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          sentAt: new Date().toISOString(),
+        }),
+      })
+
+      if (!response.ok) throw new Error('Erro ao enviar mensagem')
+
+      setSubmitted(true)
+      setFormData({ name: '', email: '', message: '' })
+    } catch {
+      setError(t('contact.error_message') || 'Erro ao enviar. Tente novamente.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const contactLinks = [
@@ -126,8 +150,27 @@ export default function Contact() {
                     placeholder={t('contact.message_placeholder')}
                     className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors resize-none" />
                 </div>
-                <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-sm mt-2">
-                  {t('contact.send')}
+                {error && (
+                  <div className="bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3 text-red-400 text-sm">
+                    {error}
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 text-sm mt-2 flex items-center justify-center gap-2"
+                >
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                      </svg>
+                      {t('contact.sending') || 'Enviando...'}
+                    </>
+                  ) : (
+                    t('contact.send')
+                  )}
                 </button>
               </form>
             )}
