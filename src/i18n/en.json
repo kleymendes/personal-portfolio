@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "showcase": "What I do",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, my name is",
+    "role": "Fullstack Developer",
+    "description": "I work daily with <1>Node.js</1>, <3>NestJS</3> and <5>Angular</5>, building applications from backend to frontend with a focus on quality and best practices.",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch"
+  },
+  "about": {
+    "label": "Who I am",
+    "title": "About me",
+    "subtitle": "Fullstack Developer",
+    "p1": "I have over 3 years of experience building full-stack web applications, working on the backend with <1>Node.js</1> and <3>NestJS</3> and on the frontend with <5>Angular</5> and <7>React</7>.",
+    "p2": "I enjoy writing clean, well-structured code, working with <1>TypeScript</1>, building RESTful APIs and learning continuously. I currently work in the <3>Industrial IoT</3> sector, which gave me a lot of experience with real-time integrations.",
+    "p3": "I am communicative, proactive and value teamwork. I am always looking for new challenges that help me grow as a developer.",
+    "location": "Location",
+    "location_value": "Jundiaí, São Paulo – Brazil",
+    "experience": "Experience",
+    "experience_value": "4+ years in dev",
+    "focus": "Focus",
+    "focus_value": "Fullstack · IoT · AI",
+    "exp_title": "Work Experience",
+    "edu_title": "Education",
+    "current": "Current"
+  },
+  "showcase": {
+    "label": "Day to day",
+    "title": "What I work with",
+    "description": "Examples of solutions I build: IoT monitoring dashboards, real-time data visualization and geographic tracking with interactive maps.",
+    "dashboard_title": "IoT Dashboard – Industrial Monitoring",
+    "dashboard_subtitle": "Real-time sensor data · Updated every 5s",
+    "online": "Online",
+    "sensors": "7 active sensors",
+    "temp": "Temperature",
+    "pressure": "Pressure",
+    "rpm": "RPM",
+    "uptime": "Uptime",
+    "since_yesterday": "since yesterday",
+    "chart_temp": "Temperature throughout the day (°C)",
+    "chart_deliveries": "Deliveries completed per day",
+    "map_title": "Asset Tracking – Interactive Map",
+    "map_subtitle": "Unit locations and collection routes · Leaflet + OpenStreetMap",
+    "units": "Units",
+    "status_online": "online",
+    "status_alert": "alert",
+    "status_offline": "offline"
+  },
+  "projects": {
+    "label": "What I've built",
+    "title": "Projects",
+    "description": "A selection of projects developed throughout my career, covering backend, frontend and IoT integrations.",
+    "highlight": "Featured",
+    "view": "View project →",
+    "github": "GitHub →"
+  },
+  "skills": {
+    "label": "What I can do",
+    "title": "Skills",
+    "main_tech": "Core technologies",
+    "full_stack": "Full stack"
+  },
+  "contact": {
+    "label": "Let's talk",
+    "title": "Get in Touch",
+    "description": "Open to new opportunities, projects and partnerships. Feel free to reach out!",
+    "info_title": "Contact information",
+    "form_title": "Send a message",
+    "name": "Name",
+    "name_placeholder": "Your name",
+    "email": "Email",
+    "email_placeholder": "your@email.com",
+    "message": "Message",
+    "message_placeholder": "How can I help?",
+    "send": "Send Message",
+    "success_title": "Message ready!",
+    "success_desc": "Your email client has been opened. Looking forward to hearing from you!",
+    "send_another": "Send another message",
+    "linkedin": "LinkedIn",
+    "phone": "Phone",
+    "location": "Location",
+    "location_value": "Jundiaí, São Paulo – Brazil"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with React + TypeScript + Tailwind CSS"
+  }
+}

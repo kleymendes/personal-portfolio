@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "showcase": "No dia a dia",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "contact": "Contato"
+  },
+  "hero": {
+    "greeting": "Olá, me chamo",
+    "role": "Desenvolvedor Fullstack",
+    "description": "Trabalho com <1>Node.js</1>, <3>NestJS</3> e <5>Angular</5> no dia a dia, desenvolvendo aplicações do backend ao frontend com foco em qualidade e boas práticas.",
+    "cta_projects": "Ver Projetos",
+    "cta_contact": "Entre em Contato"
+  },
+  "about": {
+    "label": "Quem sou eu",
+    "title": "Sobre mim",
+    "subtitle": "Desenvolvedor Fullstack",
+    "p1": "Tenho mais de 3 anos de experiência desenvolvendo aplicações web completas, atuando tanto no backend com <1>Node.js</1> e <3>NestJS</3> quanto no frontend com <5>Angular</5> e <7>React</7>.",
+    "p2": "Gosto de escrever código limpo e bem estruturado, trabalhar com <1>TypeScript</1>, construir APIs RESTful e aprender continuamente. Atualmente atuo no segmento de <3>IoT Industrial</3>, o que me deu bastante contato com integrações em tempo real.",
+    "p3": "Sou comunicativo, proativo e valorizo o trabalho em equipe. Estou sempre em busca de novos desafios que me façam crescer como desenvolvedor.",
+    "location": "Localização",
+    "location_value": "Jundiaí, São Paulo",
+    "experience": "Experiência",
+    "experience_value": "+4 anos em dev",
+    "focus": "Foco",
+    "focus_value": "Fullstack · IoT · IA",
+    "exp_title": "Experiência Profissional",
+    "edu_title": "Formação Acadêmica",
+    "current": "Atual"
+  },
+  "showcase": {
+    "label": "No dia a dia",
+    "title": "Com o que trabalho",
+    "description": "Exemplos do tipo de solução que desenvolvo: dashboards de monitoramento IoT, visualização de dados em tempo real e rastreamento geográfico com mapas interativos.",
+    "dashboard_title": "Dashboard IoT – Monitoramento Industrial",
+    "dashboard_subtitle": "Dados de sensores em tempo real · Atualização a cada 5s",
+    "online": "Online",
+    "sensors": "7 sensores ativos",
+    "temp": "Temperatura",
+    "pressure": "Pressão",
+    "rpm": "RPM",
+    "uptime": "Uptime",
+    "since_yesterday": "desde ontem",
+    "chart_temp": "Temperatura ao longo do dia (°C)",
+    "chart_deliveries": "Entregas concluídas por dia",
+    "map_title": "Rastreamento de Ativos – Mapa Interativo",
+    "map_subtitle": "Localização de unidades e rotas de coleta · Leaflet + OpenStreetMap",
+    "units": "Unidades",
+    "status_online": "online",
+    "status_alert": "alerta",
+    "status_offline": "offline"
+  },
+  "projects": {
+    "label": "O que construí",
+    "title": "Projetos",
+    "description": "Uma seleção de projetos desenvolvidos ao longo da minha carreira, abrangendo soluções de backend, frontend e integrações IoT.",
+    "highlight": "Destaque",
+    "view": "Ver projeto →",
+    "github": "GitHub →"
+  },
+  "skills": {
+    "label": "O que sei fazer",
+    "title": "Habilidades",
+    "main_tech": "Principais tecnologias",
+    "full_stack": "Stack completa"
+  },
+  "contact": {
+    "label": "Vamos conversar",
+    "title": "Entre em Contato",
+    "description": "Aberto a novas oportunidades, projetos e parcerias. Fique à vontade para entrar em contato!",
+    "info_title": "Informações de contato",
+    "form_title": "Envie uma mensagem",
+    "name": "Nome",
+    "name_placeholder": "Seu nome",
+    "email": "Email",
+    "email_placeholder": "seu@email.com",
+    "message": "Mensagem",
+    "message_placeholder": "Como posso ajudar?",
+    "send": "Enviar Mensagem",
+    "success_title": "Mensagem preparada!",
+    "success_desc": "Seu cliente de email foi aberto. Aguardo seu contato!",
+    "send_another": "Enviar outra mensagem",
+    "linkedin": "LinkedIn",
+    "phone": "Telefone",
+    "location": "Localização",
+    "location_value": "Jundiaí, São Paulo – Brasil"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "built": "Desenvolvido com React + TypeScript + Tailwind CSS"
+  }
+}
