@@ -62,7 +62,7 @@ export default function Hero() {
 
           <div className="flex-shrink-0">
             <div className="w-56 h-56 md:w-72 md:h-72 rounded-full shadow-2xl ring-4 ring-blue-500/30 overflow-hidden">
-              <img src="https://github.com/kleymendes.png" alt="Kley Silva" className="w-full h-full object-cover" />
+              <img src="/profile.png" alt="Kley Silva" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
