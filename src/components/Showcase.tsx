@@ -75,14 +75,14 @@ export default function Showcase() {
     : { fontSize: 12, borderRadius: 8, border: '1px solid #e2e8f0', backgroundColor: '#fff', color: '#1e293b' }
 
   return (
-    <section id="showcase" className="py-24 bg-slate-50 dark:bg-slate-800/50 transition-colors duration-300">
+    <section id="showcase" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
 
         <div className="text-center mb-16">
           <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-2">{t('showcase.label')}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">{t('showcase.title')}</h2>
           <div className="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
-          <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-slate-500 dark:text-slate-300 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             {t('showcase.description')}
           </p>
         </div>
