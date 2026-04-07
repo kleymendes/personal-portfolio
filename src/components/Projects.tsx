@@ -120,7 +120,7 @@ export default function Projects() {
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
         >
           {projects.map((project, i) => (
-            <motion.div className="h-full" key={i} variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as unknown as string } } }}>
+            <motion.div className="h-full" key={i} variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}>
               <ProjectCard project={project} t={t} />
             </motion.div>
           ))}

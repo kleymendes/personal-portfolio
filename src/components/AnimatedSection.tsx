@@ -6,7 +6,7 @@ export function FadeIn({ children, delay = 0 }: { children: React.ReactNode; del
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px', amount: 'some' as const }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as unknown as string }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>

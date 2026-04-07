@@ -17,7 +17,7 @@ const education = [
 
 const slideIn = (x: number, delay = 0) => ({
   hidden: { opacity: 0, x },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as unknown as string } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay, ease: "easeOut" } },
 })
 
 export default function About() {
