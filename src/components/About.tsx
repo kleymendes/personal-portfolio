@@ -15,9 +15,9 @@ const education = [
   { institution: 'PUCRS', course: 'Indústria 4.0', period: 'Jan 2024' },
 ]
 
-const slideIn = (x: number, delay = 0) => ({
+const slideIn = (x: number, delay = 0): { hidden: { opacity: number; x: number }; visible: { opacity: number; x: number; transition: { duration: number; delay: number; ease: "easeOut" } } } => ({
   hidden: { opacity: 0, x },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay, ease: "easeOut" } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay, ease: "easeOut" as "easeOut" } },
 })
 
 export default function About() {
