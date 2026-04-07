@@ -33,7 +33,7 @@ export const StaggerItem: React.FC<{ children: React.ReactNode; className?: stri
   <motion.div
     variants={{
       hidden: { opacity: 0, y: 30 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as unknown as string } },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as "easeOut" } },
     }}
     className={className}
   >
