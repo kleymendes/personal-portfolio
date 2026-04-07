@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
+import { motion } from 'framer-motion'
 
 interface Project {
   title: string
@@ -59,9 +60,13 @@ function TagBadge({ label }: { label: string }) {
 
 function ProjectCard({ project, t }: { project: Project; t: TFunction }) {
   return (
-    <div className={`rounded-xl border bg-white dark:bg-slate-800 p-6 flex flex-col gap-4 transition-shadow hover:shadow-lg ${
-      project.highlight ? 'border-blue-200 dark:border-blue-700 shadow-md' : 'border-slate-100 dark:border-slate-700 shadow-sm'
-    }`}>
+    <motion.div
+      className={`rounded-xl border bg-white dark:bg-slate-800 p-6 flex flex-col gap-4 h-full ${
+        project.highlight ? 'border-blue-200 dark:border-blue-700 shadow-md' : 'border-slate-100 dark:border-slate-700 shadow-sm'
+      }`}
+      whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.12)' }}
+      whileTap={{ scale: 0.98 }}
+    >
       {project.highlight && (
         <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-widest">{t('projects.highlight')}</span>
       )}
@@ -86,7 +91,7 @@ function ProjectCard({ project, t }: { project: Project; t: TFunction }) {
           )}
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 
@@ -95,15 +100,31 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-widest mb-2">{t('projects.label')}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">{t('projects.title')}</h2>
           <div className="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
           <p className="text-slate-500 dark:text-slate-300 mt-4 max-w-xl mx-auto text-sm leading-relaxed">{t('projects.description')}</p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => <ProjectCard key={i} project={project} t={t} />)}
-        </div>
+        </motion.div>
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+        >
+          {projects.map((project, i) => (
+            <motion.div className="h-full" key={i} variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as unknown as string } } }}>
+              <ProjectCard project={project} t={t} />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   )

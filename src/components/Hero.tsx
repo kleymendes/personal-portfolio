@@ -1,23 +1,53 @@
 import { useTranslation, Trans } from 'react-i18next'
+import { motion } from 'framer-motion'
+
+const easeOut = [0.25, 0.1, 0.25, 1] as const
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay, ease: easeOut },
+})
+
+const fadeInRight = (delay: number) => ({
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { opacity: 1, scale: 1 },
+  transition: { duration: 0.8, delay, ease: easeOut },
+})
+
+const linkHover = { y: -3, scale: 1.15 } as const
 
 export default function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="max-w-6xl mx-auto px-6 py-24 w-full">
+    <section id="hero" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="aurora aurora-1" />
+        <div className="aurora aurora-2" />
+        <div className="aurora aurora-3" />
+        <div className="aurora aurora-4" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 py-24 w-full relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-3">
+          <motion.div
+            className="flex-1 text-center md:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.p className="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-3" {...fadeUp(0.1)}>
               {t('hero.greeting')}
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+            </motion.p>
+            <motion.h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight" {...fadeUp(0.2)}>
               Kley Silva
-            </h1>
-            <h2 className="text-xl md:text-2xl text-slate-300 font-medium mb-6">
+            </motion.h1>
+            <motion.h2 className="text-xl md:text-2xl text-slate-300 font-medium mb-6" {...fadeUp(0.3)}>
               {t('hero.role')}
-            </h2>
-            <p className="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed mb-8">
+            </motion.h2>
+            <motion.p className="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed mb-8" {...fadeUp(0.4)}>
               <Trans i18nKey="hero.description"
                 components={[
                   <span key="0" />,
@@ -28,49 +58,101 @@ export default function Hero() {
                   <span key="5" className="text-blue-400 font-medium" />,
                 ]}
               />
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <a href="#projects" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 text-sm">
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start" {...fadeUp(0.5)}>
+              <a href="#projects" className="bg-blue-600 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-200 text-sm">
                 {t('hero.cta_projects')}
               </a>
-              <a href="#contact" className="border border-slate-400 hover:border-blue-400 hover:text-blue-400 text-slate-300 font-semibold px-8 py-3 rounded-lg transition-colors duration-200 text-sm">
+              <a href="#contact" className="border border-slate-400 hover:border-blue-400 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/10 text-slate-300 font-semibold px-8 py-3 rounded-lg transition-all duration-200 text-sm">
                 {t('hero.cta_contact')}
               </a>
-            </div>
+            </motion.div>
 
-            <div className="flex gap-5 mt-10 justify-center md:justify-start">
-              <a href="https://www.linkedin.com/in/kleidilsonsilva" target="_blank" rel="noopener noreferrer"
-                className="text-slate-400 hover:text-blue-400 transition-colors duration-200" aria-label="LinkedIn">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a href="https://github.com/kleymendes" target="_blank" rel="noopener noreferrer"
-                className="text-slate-400 hover:text-blue-400 transition-colors duration-200" aria-label="GitHub">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                </svg>
-              </a>
-              <a href="mailto:kley-m@hotmail.com" className="text-slate-400 hover:text-blue-400 transition-colors duration-200" aria-label="Email">
+            <motion.div className="flex gap-5 mt-10 justify-center md:justify-start" {...fadeUp(0.6)}>
+              {[
+                { href: 'https://www.linkedin.com/in/kleidilsonsilva', aria: 'LinkedIn', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
+                { href: 'https://github.com/kleymendes', aria: 'GitHub', path: 'M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z' },
+              ].map((social) => (
+                <motion.a
+                  key={social.aria}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-blue-400"
+                  aria-label={social.aria}
+                  whileHover={linkHover}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d={social.path} />
+                  </svg>
+                </motion.a>
+              ))}
+              <motion.a
+                href="mailto:kley-m@hotmail.com"
+                className="text-slate-400 hover:text-blue-400"
+                aria-label="Email"
+                whileHover={linkHover}
+                whileTap={{ scale: 0.95 }}
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-              </a>
-            </div>
-          </div>
+              </motion.a>
+              <motion.a
+                href="https://wa.me/5551996340786"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-green-400"
+                aria-label="WhatsApp"
+                whileHover={linkHover}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
-          <div className="flex-shrink-0">
-            <div className="w-56 h-56 md:w-72 md:h-72 rounded-full shadow-2xl ring-4 ring-blue-500/30 overflow-hidden">
+          <motion.div className="flex-shrink-0" {...fadeInRight(0.4)}>
+            <motion.div
+              className="group w-56 h-56 md:w-72 md:h-72 rounded-full shadow-2xl ring-4 ring-blue-500/30 overflow-hidden relative"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               <img src="/profile.png" alt="Kley Silva" className="w-full h-full object-cover" />
-            </div>
-          </div>
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <a
+                  href="https://wa.me/5551996340786"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2"
+                >
+                  <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  <span className="text-white text-sm font-medium text-center px-2">Entre em contato pelo WhatsApp</span>
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-slate-500">
+        <motion.div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-slate-500 pb-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+        >
           <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-0.5 h-8 bg-slate-600 animate-pulse" />
-        </div>
+          <motion.div
+            className="w-0.5 h-8 bg-slate-600"
+            animate={{ height: [20, 36, 20], opacity: [0.4, 0.8, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </motion.div>
       </div>
     </section>
   )

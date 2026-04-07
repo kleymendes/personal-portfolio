@@ -10,3 +10,67 @@ body {
   padding: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes auroraDrift1 {
+  0%, 100% { transform: translate(-20%, -30%) scale(1) rotate(0deg); }
+  33% { transform: translate(10%, -10%) scale(1.1) rotate(5deg); }
+  66% { transform: translate(-5%, -40%) scale(0.95) rotate(-3deg); }
+}
+
+@keyframes auroraDrift2 {
+  0%, 100% { transform: translate(50%, -20%) scale(1) rotate(0deg); }
+  33% { transform: translate(30%, -50%) scale(1.15) rotate(-8deg); }
+  66% { transform: translate(70%, 0%) scale(0.9) rotate(5deg); }
+}
+
+@keyframes auroraDrift3 {
+  0%, 100% { transform: translate(20%, 10%) scale(1.1) rotate(3deg); }
+  33% { transform: translate(-10%, -20%) scale(0.9) rotate(-5deg); }
+  66% { transform: translate(40%, 30%) scale(1.05) rotate(2deg); }
+}
+
+@keyframes auroraDrift4 {
+  0%, 100% { transform: translate(-30%, 40%) scale(0.9) rotate(-2deg); }
+  33% { transform: translate(0%, 10%) scale(1.2) rotate(4deg); }
+  66% { transform: translate(20%, 50%) scale(1) rotate(-6deg); }
+}
+
+.aurora {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.aurora-1 {
+  background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.5) 0%, transparent 70%);
+  animation: auroraDrift1 20s ease-in-out infinite;
+}
+
+.aurora-2 {
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+  animation: auroraDrift2 25s ease-in-out infinite;
+}
+
+.aurora-3 {
+  background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.35) 0%, transparent 70%);
+  animation: auroraDrift3 30s ease-in-out infinite;
+}
+
+.aurora-4 {
+  background: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+  animation: auroraDrift4 15s ease-in-out infinite;
+}
+
+.dark .aurora-1 { background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.6) 0%, transparent 70%); }
+.dark .aurora-2 { background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.5) 0%, transparent 70%); }
+.dark .aurora-3 { background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.45) 0%, transparent 70%); }
+.dark .aurora-4 { background: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.4) 0%, transparent 70%); }

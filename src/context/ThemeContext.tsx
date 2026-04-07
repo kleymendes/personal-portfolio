@@ -5,11 +5,15 @@ type Theme = 'light' | 'dark'
 interface ThemeContextType {
   theme: Theme
   toggleTheme: () => void
+  isAnimating: boolean
+  animatingTo: Theme | null
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
   toggleTheme: () => {},
+  isAnimating: false,
+  animatingTo: null,
 })
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -18,6 +22,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (saved === 'dark' || saved === 'light') return saved
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
+
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [animatingTo, setAnimatingTo] = useState<Theme | null>(null)
 
   useEffect(() => {
     const root = document.documentElement
@@ -29,10 +36,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  const toggleTheme = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'))
+  const toggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light'
+    setAnimatingTo(nextTheme)
+    setIsAnimating(true)
+    setTimeout(() => setTheme(nextTheme), 400)
+    setTimeout(() => {
+      setIsAnimating(false)
+      setAnimatingTo(null)
+    }, 1000)
+  }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isAnimating, animatingTo }}>
       {children}
     </ThemeContext.Provider>
   )

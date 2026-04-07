@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { motion } from 'framer-motion'
 
 const N8N_WEBHOOK_URL = 'https://kleysilva.app.n8n.cloud/webhook/d75daefc-60f6-4d95-84bb-94f804aace34/portfolio-contact'
 
@@ -89,15 +90,28 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 bg-slate-900">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-2">{t('contact.label')}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white">{t('contact.title')}</h2>
           <div className="w-16 h-1 bg-blue-500 mx-auto mt-4 rounded-full" />
           <p className="text-slate-400 mt-4 max-w-md mx-auto text-sm">{t('contact.description')}</p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="flex flex-col gap-6">
+        <div className="grid md:grid-cols-2 gap-12"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-6"
+          >
             <h3 className="text-lg font-semibold text-white mb-2">{t('contact.info_title')}</h3>
             {contactLinks.map((item) => (
               <a key={item.label} href={item.href}
@@ -113,9 +127,14 @@ export default function Contact() {
                 </div>
               </a>
             ))}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
             <h3 className="text-lg font-semibold text-white mb-6">{t('contact.form_title')}</h3>
             {submitted ? (
               <div className="bg-slate-800 border border-green-500/30 rounded-xl p-8 text-center">
@@ -174,7 +193,7 @@ export default function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
