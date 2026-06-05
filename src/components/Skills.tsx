@@ -12,6 +12,8 @@ const techs: Tech[] = [
   { name: 'Node.js', icon: '⬢', color: '#3C873A' },
   { name: 'NestJS', icon: '🔴', color: '#E0234E' },
   { name: 'Java', icon: '☕', color: '#ED8B00' },
+  { name: 'Spring Boot', icon: '🍃', color: '#6DB33F' },
+  { name: 'Maven', icon: '📦', color: '#C71A36' },
   { name: 'Express', icon: '◆', color: '#9EA09E' },
   { name: 'PostgreSQL', icon: '🐘', color: '#336791' },
   { name: 'MongoDB', icon: '🍃', color: '#00684A' },
