@@ -10,7 +10,6 @@ const experiences = [
 
 const education = [
   { institution: 'UNINTER', course: 'Bacharelado em Engenharia de Software', period: '2026 – 2029' },
-  { institution: 'Anhanguera Educacional', course: 'Análise e Desenvolvimento de Sistemas', period: '2022 – 2024' },
   { institution: 'Growdev', course: 'Programa Web Full Stack', period: '2021 – 2022' },
   { institution: 'PUCRS', course: 'Indústria 4.0', period: 'Jan 2024' },
 ]
